@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import './App.css'
 import Footer from './Components/Footer/Footer'
 import Banner from './Components/HomPage/Banner/Banner'
@@ -13,6 +14,11 @@ const getModels = async () => {
 
 const modelsPromise = getModels()
 function App() {
+
+    const [activeTab, setActiveTab] = useState("AI Model");
+    const [carts, setCarts] = useState([])
+  // console.log(carts);
+  // console.log(activeTab);
  
   return (
     <>
@@ -26,19 +32,26 @@ function App() {
   type="radio"
    name="my_tabs_1" className="tab w-40 font-bold rounded-full"
   aria-label="AI Model"
-    defaultChecked />
+    defaultChecked
+    onClick={() => setActiveTab("AI Model")} />
 
   <input 
   type="radio" 
   name="my_tabs_1" 
   className="tab w-40 font-bold rounded-full"
-   aria-label="Card ()"  />
+   aria-label={`Cart (${carts.length})`}
+   onClick={() => setActiveTab("Cart")} />
   
 </div>
    {/* AI Model */}
-   <Model modelsPromise={modelsPromise}></Model>
-
-   <Cart></Cart>
+  
+   {activeTab === "AI Model" ?  
+   <Model modelsPromise={modelsPromise} carts={carts} setCarts={setCarts}></Model> 
+   
+   : 
+   
+   <Cart carts={carts} setCarts={setCarts}></Cart> }
+   
    {/* Footer  */}
    <Footer></Footer>
      
