@@ -3,7 +3,7 @@ import BannerImage from "../../../assets/banner.png";
 const Banner = () => {
   return (
     
-    <section className="relative mt-4 flex  items-center  overflow-hidden  ">
+    <section className="relative mt-4 flex items-center  overflow-hidden  ">
      
       <div className="container mx-auto px-6 md:px-10 lg:px-12 w-full relative  rounded-xl bg-[#0b4a0b35] ">
         
@@ -37,7 +37,7 @@ const Banner = () => {
             </div>
 
             {/* Sub-features: Responsive Grid */}
-            <div className="flex flex-wrap gap-6 text-sm font-semibold text-slate-500 pt-6">
+            <div className="flex flex-wrap gap-6 text-sm font-semibold text-slate-500 pt-4 pb-6">
               <span>✓ 50+ Frontier Models</span>
               <span>✓ No Usage Limits</span>
               <span>✓ Cancel Anytime</span>
@@ -45,7 +45,7 @@ const Banner = () => {
           </div>
 
           {/* Right Image: Mobile' */}
-          <div className="relative pr-0 mr-0 flex justify-center lg:justify-end order-1 lg:order-2">
+          <div className="relative pt-6 pr-0 mr-0 flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative w-full max-w-80 md:max-w-105 lg:max-w-full">
               {/* Image with Glow & Pulse Effect */}
               <img
