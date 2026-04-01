@@ -87,12 +87,12 @@
     "image": "https://learningtech.uncg.edu/wp-content/uploads/2025/10/app-page-logo_copilot.png",
     "status": "popular"
   },
-   {
-    "id": 12,
-    "title": "Copilot",
-    "description": "Microsoft's AI assistant powered by GPT models.\nExcellent integration with Office 365 and Windows.",
-    "price": 20,
-    "image": "https://learningtech.uncg.edu/wp-content/uploads/2025/10/app-page-logo_copilot.png",
-    "status": "popular"
-  }
+{
+  "id": 12,
+  "title": "Sora",
+  "description": "OpenAI's revolutionary text-to-video model. Create highly descriptive and imaginative realistic scenes from simple prompts.",
+  "price": 50,
+  "image": "https://static.beebom.com/wp-content/uploads/2025/10/how-to-access-sora-2-invite-code.jpg?w=1168&quality=75",
+  "status": "MOST WANTED"
+}
 ]

@@ -27,21 +27,40 @@ function App() {
    {/* Banner Section */}
    <Banner></Banner>
    {/* Button Tabs */}
-   <div className="tabs tabs-box  mt-8 justify-center bg-transparent">
-  <input 
-  type="radio"
-   name="my_tabs_1" className="tab w-40 font-bold rounded-full"
-  aria-label="AI Model"
-    defaultChecked
-    onClick={() => setActiveTab("AI Model")} />
-
-  <input 
-  type="radio" 
-  name="my_tabs_1" 
-  className="tab w-40 font-bold rounded-full"
-   aria-label={`Cart (${carts.length})`}
-   onClick={() => setActiveTab("Cart")} />
   
+<div className="flex justify-center py-8 bg-[#041026]">
+
+  <div className="inline-flex p-1 bg-[#0d1117]/80 backdrop-blur-md border border-gray-800 rounded-full shadow-2xl">
+    
+    {/* Tab 1: AI Model */}
+    <button
+      onClick={() => setActiveTab("AI Model")}
+      className={`px-8 py-2.5 rounded-full text-sm font-bold transition-all duration-500 ${
+        activeTab === "AI Model"
+          ? "bg-linear-to-r from-purple-600 to-pink-600 text-white shadow-[0_0_20px_rgba(147,51,234,0.3)]"
+          : "text-gray-500 hover:text-gray-300"
+      }`}
+    >
+      AI Model
+    </button>
+
+    {/* Tab 2: Cart */}
+    <button
+      onClick={() => setActiveTab("Cart")}
+      className={`px-8 py-2.5 rounded-full text-sm font-bold transition-all duration-500 flex items-center gap-2 ${
+        activeTab === "Cart"
+          ? "bg-linear-to-r from-purple-600 to-pink-600 text-white shadow-[0_0_20px_rgba(147,51,234,0.3)]"
+          : "text-gray-500 hover:text-gray-300"
+      }`}
+    >
+      Cart 
+      <span className={`px-2 py-0.5 rounded-full text-[10px] shadow-inner ${
+        activeTab === "Cart" ? "bg-white/20 text-white" : "bg-gray-800 text-gray-500"
+      }`}>
+        {carts.length}
+      </span>
+    </button>
+  </div>
 </div>
    {/* AI Model */}
   

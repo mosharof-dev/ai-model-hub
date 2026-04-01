@@ -7,47 +7,51 @@ const Cart = ({ carts, setCarts }) => {
 
   const handlePayment = () => {
     setCarts([]);
-   toast.success('Payement successful!')
+    toast.success('Payment successful! Access granted.');
   };
 
   const handleDelete = (item) => {
     const filteredArray = carts.filter((c) => c.id !== item.id);
     setCarts(filteredArray);
-    toast.error("Item Deleted");
+    toast.error("Model removed from cart");
   };
 
   return (
-    <div className='container mx-auto px-4'>
-      <h1 className='text-5xl text-center my-10 font-bold'>Cart</h1>
+  <div className='bg-[#040e24]'>
+      <div className='container mx-auto px-6 py-12  '>
+      <h1 className='text-4xl md:text-5xl text-center mb-12 font-black text-white tracking-tight'>
+        Your <span className="bg-linear-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Selections</span>
+      </h1>
 
       {carts.length === 0 ? (
-        <div className='flex flex-col items-center justify-center text-center m-16'>
-          <div className='w-full p-10 bg-white border border-dashed border-gray-300 rounded-3xl shadow-lg'>
-            <h2 className='text-3xl font-semibold text-gray-800 mb-2'>
-              Your Squad is Empty!
-            </h2>
-            <p className='text-xl text-gray-600 max-w-lg mx-auto'>
-              It looks like you haven't picked any players for your dream team yet. 
-              Go to the "Available Players" tab to get started.
-            </p>
+        /* --- Empty State Design --- */
+        <div className='flex flex-col items-center justify-center text-center py-20 px-6 border border-dotted border-gray-800 rounded-xl bg-[#0b1733] backdrop-blur-md'>
+          <div className="w-24 h-24 bg-gray-900 rounded-full flex items-center justify-center mb-6 border border-gray-800">
+             <span className="text-5xl text-gray-700">🛒</span>
           </div>
+          <h2 className='text-2xl md:text-3xl font-bold text-white mb-3'>
+            Your Hub is Quiet...
+          </h2>
+          <p className=' max-w-md mx-auto leading-relaxed text-white '>
+            You haven't selected any AI models yet. Head back to the AI Models tab to empower your workspace!
+          </p>
         </div>
       ) : (
         <>
-          {/* Main List Section */}
-          <div className="space-y-5">
-            {/* EKHANE { } DIYE MAP WRAP KORA HOYECHE */}
+          {/* --- Cart Items List --- */}
+          <div className="space-y-4">
             {carts.map((item) => (
-              <div key={item.id} className='flex items-center justify-between gap-4 p-6 rounded-2xl border bg-white shadow-sm'>
-                <div className='flex items-center gap-4'>
-                  <img className='w-24 h-24 object-cover rounded-2xl' src={item.image} alt={item.title} />
+              <div key={item.id} className='group flex items-center justify-between gap-4 p-5 rounded-3xl border border-gray-800 bg-[#0d1117]/40 backdrop-blur-sm transition-all hover:border-gray-700'>
+                <div className='flex items-center gap-5'>
+                  <div className="w-20 h-20 bg-[#161b22] rounded-2xl flex items-center justify-center border border-gray-800 overflow-hidden">
+                    <img className='w-12 h-12 object-contain group-hover:scale-110 transition-transform' src={item.image} alt={item.title} />
+                  </div>
 
                   <div>
-                    <h1 className='font-bold text-2xl'>{item.title}</h1>
-                    <p className='text-gray-500'>{item.description}</p>
-                    <div className='flex items-baseline gap-1 pt-2'>
-                      <span className='font-bold text-3xl text-slate-900'>${item.price}</span>
-                      <span className='text-zinc-500 font-medium'>/month</span>
+                    <h3 className='font-bold text-xl text-white'>{item.title}</h3>
+                    <div className='flex items-baseline gap-1'>
+                      <span className='font-bold text-lg text-purple-400'>${item.price}</span>
+                      <span className='text-gray-500 text-xs font-medium'>/month</span>
                     </div>
                   </div>
                 </div>
@@ -55,29 +59,32 @@ const Cart = ({ carts, setCarts }) => {
                 {/* Delete Button */}
                 <button
                   onClick={() => handleDelete(item)}
-                  className='btn text-3xl p-3 hover:bg-red-50 rounded-full text-red-500 transition-colors'
+                  className='p-3 hover:bg-red-500/10 rounded-2xl text-gray-500 hover:text-red-500 transition-all active:scale-90'
                 >
-                  <MdDeleteForever />
+                  <MdDeleteForever size={28} />
                 </button>
               </div>
             ))}
           </div>
 
-          {/* Price Summary Section */}
-          <div className="flex justify-between my-10 bg-black text-white p-6 rounded-lg text-3xl font-bold">
-            <div>Total Price</div>
-            <div>$ {totalPrice}</div>
-          </div>
+          {/* --- Summary Section --- */}
+          <div className="mt-10 p-8 rounded-xl] bg-linear-to-br from-[#0d1117] to-[#05070a] border border-gray-800 shadow-2xl">
+            <div className="flex justify-between items-center mb-8">
+              <span className="text-gray-400 font-medium">Total Subscription Cost</span>
+              <span className="text-4xl font-black text-white">$ {totalPrice}</span>
+            </div>
 
-          <button
-            onClick={handlePayment}
-            className="btn w-full mb-10 py-4 bg-red-500 hover:bg-red-600 text-white text-2xl font-bold rounded-lg transition-all"
-          >
-            Proceed to Checkout
-          </button>
+            <button
+              onClick={handlePayment}
+              className="w-full py-4 bg-white hover:bg-purple-600 text-black hover:text-white text-lg font-black rounded-2xl transition-all duration-300 shadow-[0_10px_30px_rgba(255,255,255,0.05)] active:scale-[0.98]"
+            >
+              Confirm & Checkout
+            </button>
+          </div>
         </>
       )}
     </div>
+  </div>
   );
 };
 
